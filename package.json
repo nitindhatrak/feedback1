@@ -1,0 +1,24 @@
+{
+  "name": "userStory",
+  "version": "0.0.0",
+  "description": "This is a user Story app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Johnny",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-route": "^1.5.0",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.0",
+    "bootstrap": "^3.3.6",
+    "express": "^4.13.4",
+    "jquery": "^2.2.0",
+    "jsonwebtoken": "^5.5.4",
+    "mongoose": "^4.4.3",
+    "morgan": "^1.6.1",
+    "socket.io": "^1.3.4"
+  }
+}

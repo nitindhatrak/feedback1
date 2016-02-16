@@ -1,0 +1,81 @@
+
+<div class="jumbotron text-center" ng-if="!main.loggedIn">
+	
+	<div>
+		<h1>Please Sign up!</h1>
+	</div>
+
+	<div>
+		<p>Login to write your feedback</p>
+		<a href="/login" class="btn btn-primary">Login</a>
+	</div>
+</div>
+
+
+
+<div class="row" ng-if="main.loggedIn">
+	
+	<div ng-controller="FeedbackController as feedback">
+		<div class="col-md-2" class="panel-heading">
+			<div ng-class="row" class="panel panel-primary">
+				<div class="panel-heading">Current Users</div>
+				<div class="panel-body">
+					<ul>
+					  	<li ng-repeat="item in feedback.allUsers" style="padding-top:2px;">
+					  		<button class="btn btn-info" ng-click="feedback.addFeedback($event, item)">{{item.name}}</button>
+					  	</li>
+		  			</ul>
+		  		</div>
+		  	</div>
+		</div>
+		<div class="col-md-9">
+			<div ng-class="row">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Write your feedback </div>
+					<div class="panel-body">
+						<div >
+							<p>Write your feedback for {{feedback.currentFeedback.name}}</p>
+						<div/>
+						<form ng-submit="feedback.createFeedback()">
+							<br/>
+							<label>Strengths</label>
+							<br/>
+							<input class="form-control input-lg" type="text" ng-model="feedback.feedbackData.strength" 		placeholder=".....">
+							<br/>
+							<label>Weakness</label>
+							<br/>
+							<input class="form-control input-lg" type="text" ng-model="feedback.feedbackData.weakness" 		placeholder=".....">
+						</form>
+						<br/>
+
+						<div class="checkbox">
+						    <label>
+						      <input type="checkbox" id="anonymous"> Submit as Anonymous
+						    </label>
+						</div>
+						<button ng-click="feedback.createFeedback()"  class="btn btn-primary">Submit</button>
+					</div>
+				</div>
+				<br/>
+				<div class="panel panel-success">
+					<div class="panel-heading">Your Strengths</div>
+					<div class="panel-body" ng-repeat="each in feedback.feedbacks | reverse">
+						<p>{{ each.strength }}</p>
+						<p>-- {{ each.strength }}</p>
+					</div>
+				</div>
+
+				<div class="panel panel-success">
+					<div class="panel-heading">Areas of improvement</div>
+					<div class="panel-body" ng-repeat="each in feedback.feedbacks | reverse">
+						<p>{{ each.weakness }}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+		
+	</div>
+</div>
+
